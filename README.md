@@ -1,6 +1,6 @@
 # README
 
-###GIT Strategie (GIT-Flow Richtlinien):
+### GIT Strategie (GIT-Flow Richtlinien):
 
   * Der main Branch stellt das Live Server Abbild dar.
   * Der develop Branch wird als Review App deployt und dient als Sammelbecken der Features die zum Projekt (main) kommen.
