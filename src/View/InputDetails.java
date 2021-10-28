@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class UserDetails extends JPanel {
+public class InputDetails extends JPanel {
 
     // Table for user data
     private JTable userTable;
@@ -15,7 +15,7 @@ public class UserDetails extends JPanel {
     // back button
     private JButton backButton;
 
-    public UserDetails() {
+    public InputDetails() {
         // uses box layout
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         // toolbar for buttons
