@@ -3,27 +3,22 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.geom.Line2D;
 
 public class Form extends JPanel {
-
+    public JButton selectFileButton;
     private JTextArea textField;
-
-    private JButton inputButton;
-    private JButton viewButton;
+    private JButton selectDataButton;
 
     public Form() {
 
         JLabel textLabel = new JLabel("Text:");
-        JLabel lastnameLabel = new JLabel("Data:");
+        JLabel dataLabel = new JLabel("Data: "); //TODO CHANGE NAME
         JSeparator separator = new JSeparator(SwingConstants.VERTICAL);
-
         textField = new JTextArea(20, 20);
-
-        inputButton = new JButton("Select File");
-        inputButton.setPreferredSize(new Dimension(278, 40));
-        viewButton = new JButton("View All Users");
-        viewButton.setPreferredSize(new Dimension(278, 40));
+        selectFileButton = new JButton("Select File");
+        selectFileButton.setPreferredSize(new Dimension(278, 40));
+        selectDataButton = new JButton("Select Data File");
+        selectDataButton.setPreferredSize(new Dimension(278, 40));
 
         Insets inset = new Insets(10, 10, 10, 10);
 
@@ -38,49 +33,34 @@ public class Form extends JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = GridBagConstraints.CENTER;
-
         add(textLabel, gridBagConstraints);
 
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        add(selectFileButton, gridBagConstraints);
 
-        add(inputButton, gridBagConstraints);
-
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-
         add(textField, gridBagConstraints);
 
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-
         add(separator, gridBagConstraints);
 
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        add(dataLabel, gridBagConstraints);
 
-        add(lastnameLabel, gridBagConstraints);
-
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-
-        add(viewButton, gridBagConstraints);
+        add(selectDataButton, gridBagConstraints);
     }
 
-    // getters
-    public String getFirstname() {
-        return textField.getText();
+    public void selectFile(ActionListener actionListener) {
+        selectFileButton.addActionListener(actionListener);
     }
 
-    public void submitUsers(ActionListener actionListener) {
-        inputButton.addActionListener(actionListener);
-    }
-
-    public void viewUsers(ActionListener actionListener) {
-        viewButton.addActionListener(actionListener);
-    }
-
-    // reset fields
-    public void reset(boolean bln) {
-        if (bln) {
-            textField.setText("");
-        }
+    public void selectData(ActionListener actionListener) {
+        selectDataButton.addActionListener(actionListener);
     }
 }

@@ -1,43 +1,26 @@
 package Controller;
 
-import Model.Database;
-import Model.User;
 import View.Form;
-import View.InputDetails;
-
 import javax.swing.*;
-import java.io.File;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UserController {
-    // database file
-    private String databaseFile = "src\\data\\database.txt";
-    private Database database;
     private Form form;
-    private InputDetails inputDetails;
 
-    public UserController(Form form, InputDetails inputDetails) {
-        this.database = new Database();
+    public UserController(Form form) {
         this.form = form;
-        this.inputDetails = inputDetails;
-
-        // submit user
-        this.form.submitUsers(e -> {
-            String firstname = this.form.getFirstname().trim();
-
-            // simple validations
-            if (firstname.isEmpty()) {
-                JOptionPane.showMessageDialog(this.form, "First Name Required.", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            this.database.saveUser(new File(databaseFile));
-            this.form.reset(true);
+        this.form.selectFile(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showOpenDialog(null); // select file to open
+            FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
+            fileChooser.setFileFilter(fileFilter);
         });
 
-        // load users
-        this.form.viewUsers(e -> {
-            this.inputDetails.getUsers(this.database.loadUsers(new File(databaseFile)));
+        this.form.selectData(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showOpenDialog(null); // select Data file to open
+            FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
+            fileChooser.setFileFilter(fileFilter);
         });
     }
 }
