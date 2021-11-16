@@ -5,94 +5,62 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Form extends JPanel {
-
-    private JTextField firstnameField;
-    private JTextField lastNameField;
-
-    private JButton addButton;
-    private JButton viewButton;
+    public JButton selectFileButton;
+    private JTextArea textField;
+    private JButton selectDataButton;
 
     public Form() {
 
-        JLabel firstnameLabel = new JLabel("First Name: ");
-        JLabel lastnameLabel = new JLabel("Last Name: ");
+        JLabel textLabel = new JLabel("Text:");
+        JLabel dataLabel = new JLabel("Data: "); //TODO CHANGE NAME
+        JSeparator separator = new JSeparator(SwingConstants.VERTICAL);
+        textField = new JTextArea(20, 20);
+        selectFileButton = new JButton("Select File");
+        selectFileButton.setPreferredSize(new Dimension(278, 40));
+        selectDataButton = new JButton("Select Data File");
+        selectDataButton.setPreferredSize(new Dimension(278, 40));
 
-        firstnameField = new JTextField(25);
-        lastNameField = new JTextField(25);
-
-        addButton = new JButton("Add User");
-        addButton.setPreferredSize(new Dimension(278, 40));
-        viewButton = new JButton("View All Users");
-        viewButton.setPreferredSize(new Dimension(278, 40));
-
-        // space between fields
-        Insets fieldsInset = new Insets(0, 0, 10, 0);
-        // space between buttons
-        Insets buttonInset = new Insets(20, 0, 0, 0);
+        Insets inset = new Insets(10, 10, 10, 10);
 
         // uses Grid Bag Layout
         setLayout(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.insets = fieldsInset;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = inset;
         gridBagConstraints.fill = GridBagConstraints.NONE;
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = GridBagConstraints.WEST;
-
-        add(firstnameLabel, gridBagConstraints);
+        gridBagConstraints.anchor = GridBagConstraints.CENTER;
+        add(textLabel, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-
-        add(firstnameField, gridBagConstraints);
+        add(selectFileButton, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = GridBagConstraints.WEST;
+        add(textField, gridBagConstraints);
 
-        add(lastnameLabel, gridBagConstraints);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        add(separator, gridBagConstraints);
 
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        add(dataLabel, gridBagConstraints);
 
-        add(lastNameField, gridBagConstraints);
-
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = buttonInset;
-
-        add(addButton, gridBagConstraints);
-
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.insets = buttonInset;
-
-        add(viewButton, gridBagConstraints);
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        add(selectDataButton, gridBagConstraints);
     }
 
-    // getters
-    public String getFirstname() {
-        return firstnameField.getText();
+    public void selectFile(ActionListener actionListener) {
+        selectFileButton.addActionListener(actionListener);
     }
 
-    public String getLastname() {
-        return lastNameField.getText();
-    }
-
-    public void submitUsers(ActionListener actionListener) {
-        addButton.addActionListener(actionListener);
-    }
-
-    public void viewUsers(ActionListener actionListener) {
-        viewButton.addActionListener(actionListener);
-    }
-
-    // reset fields
-    public void reset(boolean bln) {
-        if (bln) {
-            firstnameField.setText("");
-            lastNameField.setText("");
-        }
+    public void selectData(ActionListener actionListener) {
+        selectDataButton.addActionListener(actionListener);
     }
 }
