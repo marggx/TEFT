@@ -1,12 +1,10 @@
 package View;
 
 import Controller.UserController;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-
     // Card layout for switching view
     private CardLayout cardLayout;
 
@@ -14,17 +12,17 @@ public class MainFrame extends JFrame {
         super("TEFT");
         cardLayout = new CardLayout();
         Form form = new Form();
-        InputDetails inputDetails = new InputDetails();
         // sets our layout as a card layout
         setLayout(cardLayout);
 
-        // adds view to card layout with unique constraints‚
+        // initialize user controller
+        new UserController(form);
+
+        // adds view to card layout with unique constraints
         add(form, "form");
-        add(inputDetails, "input details");
         add(new JSeparator(SwingConstants.VERTICAL), "verticle- details");
         // switch view according to its constraints on click
-        form.viewUsers(e -> cardLayout.show(MainFrame.this.getContentPane(), "input details"));
-        inputDetails.backButton(e -> cardLayout.show(MainFrame.this.getContentPane(), "form"));
+        form.selectFile(e -> cardLayout.show(MainFrame.this.getContentPane(), "input details"));
 
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");
