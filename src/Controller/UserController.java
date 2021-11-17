@@ -10,17 +10,21 @@ public class UserController {
     public UserController(Form form) {
         this.form = form;
         this.form.selectFile(e -> {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.showOpenDialog(null); // select file to open
+            //limit File Opener only text files
             FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
+            JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileFilter(fileFilter);
+            // select file to open
+            fileChooser.showOpenDialog(null);
         });
 
         this.form.selectData(e -> {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.showOpenDialog(null); // select Data file to open
+            //limit File Opener only text files
             FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
+            JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileFilter(fileFilter);
+            // select Data file to open
+            fileChooser.showOpenDialog(null);
         });
     }
 }
