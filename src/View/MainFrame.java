@@ -1,6 +1,7 @@
 package View;
 
-import Controller.UserController;
+import Controller.FileController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,7 +17,7 @@ public class MainFrame extends JFrame {
         setLayout(cardLayout);
 
         // initialize user controller
-        new UserController(form);
+        new FileController(form);
 
         // adds view to card layout with unique constraints
         add(form, "form");

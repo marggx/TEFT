@@ -4,10 +4,10 @@ import View.Form;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class UserController {
+public class FileController {
     private Form form;
 
-    public UserController(Form form) {
+    public FileController(Form form) {
         this.form = form;
         this.form.selectFile(e -> {
             //limit File Opener only text files
