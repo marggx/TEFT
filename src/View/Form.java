@@ -89,4 +89,8 @@ public class Form extends JPanel {
     public void selectData(ActionListener actionListener) {
         selectDataButton.addActionListener(actionListener);
     }
+
+    public void showOutput(String output) {
+        textField.setText(output);
+    }
 }

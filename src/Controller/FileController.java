@@ -1,8 +1,14 @@
 package Controller;
 
 import View.Form;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FileController {
     private Form form;
@@ -16,6 +22,19 @@ public class FileController {
             fileChooser.setFileFilter(fileFilter);
             // select file to open
             fileChooser.showOpenDialog(null);
+            File file = fileChooser.getSelectedFile();
+            String fileContent = "";
+            Scanner scan = null;
+            try {
+                scan = new Scanner(file);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            while (scan.hasNextLine()) {
+                fileContent = fileContent.concat(scan.nextLine() + "\n");
+            }
+
+            this.form.showOutput(fileContent);
         });
 
         this.form.selectData(e -> {
