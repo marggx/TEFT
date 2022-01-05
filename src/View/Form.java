@@ -20,10 +20,13 @@ public class Form extends JPanel {
         textField = new JTextArea(30, 30);
         selectFileButton = new JButton("Select File");
         selectFileButton.setPreferredSize(new Dimension(278, 40));
+        selectFileButton.setToolTipText("Select a File to see the text");
         selectDataButton = new JButton("Select Data File");
         selectDataButton.setPreferredSize(new Dimension(278, 40));
+        selectDataButton.setToolTipText("Select a Data file");
         processDatabutton = new JButton("Process");
         processDatabutton.setPreferredSize(new Dimension(278, 40));
+        processDatabutton.setToolTipText("Process the file");
         saveDataButton = new JButton("Save");
         saveDataButton.setPreferredSize(new Dimension(270, 40));
 
