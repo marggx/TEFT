@@ -16,14 +16,11 @@ public class MainFrame extends JFrame {
         // sets our layout as a card layout
         setLayout(cardLayout);
 
-        // initialize user controller
+        // initialize file controller
         new FileController(form);
 
         // adds view to card layout with unique constraints
         add(form, "form");
-        add(new JSeparator(SwingConstants.VERTICAL), "verticle- details");
-        // switch view according to its constraints on click
-        form.selectFile(e -> cardLayout.show(MainFrame.this.getContentPane(), "input details"));
 
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");
