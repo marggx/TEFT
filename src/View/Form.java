@@ -14,7 +14,7 @@ public class Form extends JPanel {
     public Form() {
 
         JLabel textLabel = new JLabel("Text:");
-        JLabel dataLabel = new JLabel("Data: "); //TODO CHANGE NAME
+        JLabel dataLabel = new JLabel("Data:"); //TODO CHANGE NAME
         JSeparator separatorMid = new JSeparator(SwingConstants.VERTICAL);
         separatorMid.setPreferredSize(new Dimension(20, 0));
         textField = new JTextArea(30, 30);
