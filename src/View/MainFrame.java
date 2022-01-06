@@ -1,6 +1,7 @@
 package View;
 
 import Controller.FileController;
+import Controller.TextController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,13 +18,11 @@ public class MainFrame extends JFrame {
         setLayout(cardLayout);
 
         // initialize user controller
-        new FileController(form);
+        new TextController(form);
 
         // adds view to card layout with unique constraints
         add(form, "form");
         add(new JSeparator(SwingConstants.VERTICAL), "verticle- details");
-        // switch view according to its constraints on click
-        form.selectFile(e -> cardLayout.show(MainFrame.this.getContentPane(), "input details"));
 
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");

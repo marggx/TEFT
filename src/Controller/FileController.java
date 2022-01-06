@@ -5,11 +5,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileController {
-    private Form form;
 
     public FileController(Form form) {
-        this.form = form;
-        this.form.selectFile(e -> {
+        form.selectFile(e -> {
             //limit File Opener only text files
             FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
             JFileChooser fileChooser = new JFileChooser();
@@ -18,7 +16,7 @@ public class FileController {
             fileChooser.showOpenDialog(null);
         });
 
-        this.form.selectData(e -> {
+        form.selectData(e -> {
             //limit File Opener only text files
             FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Files", "txt", "text");
             JFileChooser fileChooser = new JFileChooser();
