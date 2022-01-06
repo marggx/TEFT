@@ -1,28 +1,41 @@
 package Controller;
 
+import Engine.Compiler;
+import Engine.Lexer;
+import Engine.Parser;
+import Model.Token;
 import View.Form;
-import java.util.regex.*;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class TextController {
 
-    final String regexVariable = "\\{{\\s*([^}]+)\\s*}}";
-    final String regexFunc = "\\{%\\s*([^%}]+)\\s*%}";
-
-
     public TextController(Form form) {
-        form.selectFile(e -> {
+        form.process(e -> {
+            Lexer lexer = new Lexer(form.textField.getText());
+            ArrayList<ArrayList<String>> variables = lexer.lex(lexer.regexVariable);
+            ArrayList<ArrayList<String>> functions = lexer.lex(lexer.regexFunc);
 
-            final Pattern pattern = Pattern.compile(regexFunc, Pattern.COMMENTS);
-            final Matcher matcher = pattern.matcher("{{test}}{% set }test = 123 %} {% if 1234 = abc %} {% endif %}");
+            Parser parser = new Parser();
+            ArrayList<Token> tokens = new ArrayList<>();
 
-            while (matcher.find()) {
-                System.out.println("Full match: " + matcher.group(0));
-
-                for (int i = 1; i <= matcher.groupCount(); i++) {
-                    System.out.println("Group " + i + ": " + matcher.group(i).trim());
-                }
+            for (ArrayList<String> hit : variables) {
+                tokens.add(parser.createTokenForHit(hit, "var", new ArrayList<>()));
             }
+
+            for (ArrayList<String> hit : functions) {
+                tokens.add(parser.createTokenForHit(hit, "func", new ArrayList<>()));
+            }
+
+            tokens.sort(Comparator.comparing(Token::getStart));
+
+            Compiler compiler = new Compiler(tokens, form.textField.getText());
+
+            String processedString = compiler.compile(form.textField.getText());
+
+            form.textField.setText(processedString);
         });
 
     }
