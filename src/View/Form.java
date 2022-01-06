@@ -13,6 +13,8 @@ public class Form extends JPanel {
 
     public Form() {
 
+        com.formdev.flatlaf.FlatDarculaLaf.install();
+
         JLabel textLabel = new JLabel("Text:");
         JLabel dataLabel = new JLabel("Data: "); //TODO CHANGE NAME
         JSeparator separatorMid = new JSeparator(SwingConstants.VERTICAL);
