@@ -2,6 +2,7 @@ package Controller;
 
 import View.Form;
 
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -37,7 +38,7 @@ public class FileController {
                 fileContent = fileContent.concat(scan.nextLine() + "\n");
             }
 
-            this.form.showOutput(fileContent);
+            form.showOutput(fileContent);
         });
 
         form.selectData(e -> {
@@ -52,7 +53,7 @@ public class FileController {
 
             JSONParser parser = new JSONParser();
             try {
-                Object obj = parser.parse(new FileReader(file));
+               form.json = (JSONObject) parser.parse(new FileReader(file));
 
             } catch (IOException | ParseException ex) {
                 ex.printStackTrace();

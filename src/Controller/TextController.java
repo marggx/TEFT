@@ -31,7 +31,7 @@ public class TextController {
 
             tokens.sort(Comparator.comparing(Token::getStart));
 
-            Compiler compiler = new Compiler(tokens, form.textField.getText());
+            Compiler compiler = new Compiler(tokens, form.textField.getText(), form.json);
 
             String processedString = compiler.compile(form.textField.getText());
 

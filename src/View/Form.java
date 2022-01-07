@@ -1,5 +1,7 @@
 package View;
 
+import org.json.simple.JSONObject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -7,6 +9,7 @@ import java.awt.event.ActionListener;
 public class Form extends JPanel {
     public JButton selectFileButton;
     public JTextArea textField;
+    public JSONObject json;
     private JButton selectDataButton;
     private JButton processDatabutton;
     private JButton saveDataButton;
