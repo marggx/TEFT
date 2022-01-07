@@ -4,16 +4,16 @@ import Controller.FileController;
 
 import javax.swing.*;
 import java.awt.*;
+import com.formdev.flatlaf.*;
 
 public class MainFrame extends JFrame {
-    // Card layout for switching vie
-    private CardLayout cardLayout;
 
 
     public MainFrame() {
         super("TEFT");
-        com.formdev.flatlaf.FlatDarculaLaf.install();
-        cardLayout = new CardLayout();
+        FlatDarculaLaf.install();
+        // Card layout for switching vie
+        CardLayout cardLayout = new CardLayout();
         Form form = new Form();
         // sets our layout as a card layout
         setLayout(cardLayout);
