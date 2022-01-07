@@ -13,17 +13,24 @@ public class Form extends JPanel {
 
     public Form() {
 
+        com.formdev.flatlaf.FlatDarculaLaf.install();
+
         JLabel textLabel = new JLabel("Text:");
-        JLabel dataLabel = new JLabel("Data:"); //TODO CHANGE NAME
+        JLabel dataLabel = new JLabel("Data: ");
         JSeparator separatorMid = new JSeparator(SwingConstants.VERTICAL);
         separatorMid.setPreferredSize(new Dimension(20, 0));
+        JSeparator separatorHorizontal = new JSeparator(SwingConstants.HORIZONTAL);
+        separatorHorizontal.setPreferredSize(new Dimension(278, 30));
         textField = new JTextArea(30, 30);
         selectFileButton = new JButton("Select File");
         selectFileButton.setPreferredSize(new Dimension(278, 40));
+        selectFileButton.setToolTipText("Select a File to see the text");
         selectDataButton = new JButton("Select Data File");
         selectDataButton.setPreferredSize(new Dimension(278, 40));
+        selectDataButton.setToolTipText("Select a Data file");
         processDatabutton = new JButton("Process");
         processDatabutton.setPreferredSize(new Dimension(278, 40));
+        processDatabutton.setToolTipText("Process the file");
         saveDataButton = new JButton("Save");
         saveDataButton.setPreferredSize(new Dimension(270, 40));
 
@@ -39,14 +46,20 @@ public class Form extends JPanel {
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 1;
+        gridBagConstraints.gridwidth = 1;
         add(textLabel, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 1;
+        gridBagConstraints.gridwidth = 1;
         add(selectFileButton, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = GridBagConstraints.REMAINDER;
+        //gridBagConstraints.gridwidth = 1;
         add(textField, gridBagConstraints);
 
         gridBagConstraints.gridx = 1;
@@ -73,11 +86,20 @@ public class Form extends JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 1;
         gridBagConstraints.gridwidth = 1;
-        add(processDatabutton, gridBagConstraints);
+        add(separatorHorizontal, gridBagConstraints);
 
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridheight = 1;
+        gridBagConstraints.gridwidth = 1;
+
+        add(processDatabutton, gridBagConstraints);
+
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new Insets(40, 0, 250, 0);
+        gridBagConstraints.gridheight = GridBagConstraints.REMAINDER;
         gridBagConstraints.gridwidth = 1;
         add(saveDataButton, gridBagConstraints);
     }
@@ -89,8 +111,10 @@ public class Form extends JPanel {
     public void selectData(ActionListener actionListener) {
         selectDataButton.addActionListener(actionListener);
     }
-
     public void process(ActionListener actionListener) {
         processDatabutton.addActionListener(actionListener);
+    }
+    public void showOutput(String output) {
+        textField.setText(output);
     }
 }
