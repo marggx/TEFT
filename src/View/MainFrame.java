@@ -1,25 +1,28 @@
 package View;
 
 import Controller.FileController;
+import Controller.TextController;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
+import com.formdev.flatlaf.*;
 
 public class MainFrame extends JFrame {
-    // Card layout for switching vie
-    private CardLayout cardLayout;
 
 
     public MainFrame() {
         super("TEFT");
-        com.formdev.flatlaf.FlatDarculaLaf.install();
-        cardLayout = new CardLayout();
+        FlatDarculaLaf.install();
+        // Card layout for switching vie
+        CardLayout cardLayout = new CardLayout();
         Form form = new Form();
         // sets our layout as a card layout
         setLayout(cardLayout);
 
         // initialize file controller
         new FileController(form);
+        new TextController(form);
 
         // adds view to card layout with unique constraints
         add(form, "form");
