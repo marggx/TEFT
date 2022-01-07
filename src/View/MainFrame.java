@@ -1,6 +1,8 @@
 package View;
 
 import Controller.FileController;
+import Controller.TextController;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +22,7 @@ public class MainFrame extends JFrame {
 
         // initialize file controller
         new FileController(form);
+        new TextController(form);
 
         // adds view to card layout with unique constraints
         add(form, "form");

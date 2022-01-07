@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Form extends JPanel {
     public JButton selectFileButton;
-    private JTextArea textField;
+    public JTextArea textField;
     private JButton selectDataButton;
     private JButton processDatabutton;
     private JButton saveDataButton;
@@ -111,7 +111,9 @@ public class Form extends JPanel {
     public void selectData(ActionListener actionListener) {
         selectDataButton.addActionListener(actionListener);
     }
-
+    public void process(ActionListener actionListener) {
+        processDatabutton.addActionListener(actionListener);
+    }
     public void showOutput(String output) {
         textField.setText(output);
     }
